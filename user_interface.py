@@ -1,4 +1,5 @@
 import os
+from soda_machine import SodaMachine
 
 
 def simulation_main_menu():
@@ -6,10 +7,10 @@ def simulation_main_menu():
     validate_user_selection = (False, None)
     while validate_user_selection[0] is False:
         print("\t\t-Simulation menu-")
-        print("\tPress -0- to begin transaction")
-        print("\tPress -1- to check wallet for coins")
-        print("\tPress -2- to check backpack for cans")
-        print("\tPress -3- to terminate simulation")
+        print("\tPress -1- to begin transaction")
+        print("\tPress -2- to check wallet for coins")
+        print("\tPress -3- to check backpack for cans")
+        print("\tPress -4- to terminate simulation")
         user_input = try_parse_int(input())
         validate_user_selection = validate_main_menu(user_input)
     return validate_user_selection[1]
@@ -74,8 +75,8 @@ def soda_selection(inventory):
         print("Please choose from the following options:")
         i = 1
         for can in soda_options:
-            print("\n\tEnter -{i}- for {can} : ${can.price}")
-            i++
+            print(f"\n\tEnter -{i}- for {can} : ${can.price}")
+            i += 1  # i+=
         user_selection = try_parse_int(input("Selection:"))
         validated_user_selection = validate_coin_choice(user_selection, soda_options)
     return validated_user_selection[1]
@@ -155,6 +156,6 @@ def validate_coin_selection(selection):
 
 def end_message(soda_name, change_amount):
     """Closing message displaying name of soda purchased and amount of change returned"""
-    print(f'Enjoy your {soda}')
+    print(f'Enjoy your {soda_name}')
     if change_amount >= 0:
         print(f'Dispensing ${change_amount}')
