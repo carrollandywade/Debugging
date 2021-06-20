@@ -29,11 +29,11 @@ def validate_main_menu(user_input):
 
 def display_customer_wallet_info(coins_list, total_value):
     """Takes in a list of ints to display number of coins along with total value of coins."""
-    print('You have {coins_list[0]} Quarters')
-    print('You have {coins_list[1]} Dimes')
-    print('You have {coins_list[2]} Nickels')
-    print('You have {coins_list[3]} Pennies')
-    print('Your wallet\'s total value is {total_value}')
+    print(f'You have {coins_list[0]} Quarters')
+    print(f'You have {coins_list[1]} Dimes')
+    print(f'You have {coins_list[2]} Nickels')
+    print(f'You have {coins_list[3]} Pennies')
+    print(f'Your wallet\'s total value is {total_value}')
 
 
 def display_welcome():
@@ -76,7 +76,7 @@ def soda_selection(inventory):
         i = 1
         for can in soda_options:
             print(f"\n\tEnter -{i}- for {can} : ${can.price}")
-            i += 1  # i+=
+            i += 1
         user_selection = try_parse_int(input("Selection:"))
         validated_user_selection = validate_coin_choice(user_selection, soda_options)
     return validated_user_selection[1]
