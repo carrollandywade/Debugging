@@ -1,7 +1,6 @@
 import os
 
 
-
 def simulation_main_menu():
     """Main menu prompting user to choose an option"""
     validate_user_selection = (False, None)

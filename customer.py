@@ -9,13 +9,13 @@ class Customer:
         self.wallet = Wallet()
         self.backpack = Backpack()
 
-    def gather_coins_from_wallet(self, selected_soda):
+    def gather_coins_from_wallet(self, selected_soda_name):
         """Method allowing user to choose coins from wallet for payment"""
         will_proceed = False
         customer_payment = []
         user_interface.output_text("Continue to add coins until you are ready to insert them into the machine")
         while will_proceed:
-            user_interface.display_can_cost(selected_soda)
+            user_interface.display_can_cost(selected_soda_name)
             user_interface.display_payment_value(customer_payment)
             coin_name = user_interface.coin_selection()
             if coin_name == "done":

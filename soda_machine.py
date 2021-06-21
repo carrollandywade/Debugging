@@ -39,19 +39,15 @@ class SodaMachine:
     def run_transaction(self, customer):
 
         selected_soda_name = user_interface.soda_selection(self.inventory)
-
         selected_soda = self.get_inventory_soda(selected_soda_name)
-
         customer_payment = customer.gather_coins_from_wallet(selected_soda_name)
-
-        self.calculate_transaction(customer_payment, selected_soda_name, customer)
-
+        self.calculate_transaction(customer_payment, selected_soda, customer)
         user_interface.output_text("Transaction complete")
 
     def calculate_transaction(self, customer_payment, selected_soda, customer):
         total_payment_value = self.calculate_coin_value(customer_payment)
         if total_payment_value < selected_soda.price:
-            change_value = self.determine_change_value(total_payment_value, selected_soda.price)
+            change_value = self.determine_change_value(total_payment_value, selected_soda)
             customer_change = self.gather_change_from_register(change_value)
             if customer_change is None:
                 user_interface.output_text(f'Dispensing ${total_payment_value} back to customer')
@@ -128,7 +124,7 @@ class SodaMachine:
             if can == selected_soda_name:
                 self.inventory.remove(can)
                 return can
-        return None
+        return selected_soda_name
 
     def return_inventory(self, chosen_soda):
         """Re-adds a remove can back to inventory upon unsuccessful purchase attempt"""
@@ -137,4 +133,4 @@ class SodaMachine:
     def deposit_coins_into_register(self, coin_list):
         """Takes in list of coins as argument, adds each coin from list to the register"""
         for coin in coin_list:
-            self.register.append(coin_list)
+            self.register.append(coin)
