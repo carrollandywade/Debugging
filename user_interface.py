@@ -1,5 +1,5 @@
 import os
-from soda_machine import SodaMachine
+
 
 
 def simulation_main_menu():
@@ -49,7 +49,7 @@ def display_welcome():
 
 def output_text(text):
     """User input method that will print to console any string passed in as an argument"""
-    print("text")
+    print(text)
 
 
 def clear_console():
