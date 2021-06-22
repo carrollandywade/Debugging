@@ -37,17 +37,17 @@ class SodaMachine:
             self.run_transaction(customer)
 
     def run_transaction(self, customer):
-
         selected_soda_name = user_interface.soda_selection(self.inventory)
-        selected_soda = self.get_inventory_soda(selected_soda_name)
+        selected_soda_name = self.get_inventory_soda(selected_soda_name)
+        selected_soda_price = .60
         customer_payment = customer.gather_coins_from_wallet(selected_soda_name)
-        self.calculate_transaction(customer_payment, selected_soda, customer)
+        self.calculate_transaction(customer_payment, selected_soda_price, customer)
         user_interface.output_text("Transaction complete")
 
-    def calculate_transaction(self, customer_payment, selected_soda, customer):
+    def calculate_transaction(self, customer_payment, selected_soda_price, customer):
         total_payment_value = self.calculate_coin_value(customer_payment)
-        if total_payment_value < selected_soda.price:
-            change_value = self.determine_change_value(total_payment_value, selected_soda)
+        if total_payment_value < selected_soda_price:
+            change_value = self.determine_change_value(total_payment_value, selected_soda_price)
             customer_change = self.gather_change_from_register(change_value)
             if customer_change is None:
                 user_interface.output_text(f'Dispensing ${total_payment_value} back to customer')

@@ -8,6 +8,7 @@ class Simulation:
         self.customer = Customer
         self.soda_machine = SodaMachine
 
+
     def run_simulation(self):
         """The central method called in main.py."""
         customer = Customer()
